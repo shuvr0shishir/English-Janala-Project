@@ -93,6 +93,7 @@
     </header>
 
     <main>
+        <!-- banner -->
         <section
             class="banner flex flex-col-reverse md:flex-row md:justify-between items-center gap-5 md:gap-10 w-11/12 mx-auto">
             <div class="banner-content flex-1 text-center md:text-left">
@@ -101,7 +102,7 @@
                     বাড়াতে চান, আমাদের
                     Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
                 <fieldset class="fieldset mt-7 space-y-2">
-                    <input type="email" class="input" placeholder="Enter Your Name" />
+                    <input type="email" class="input" placeholder="Enter Your Number" />
                     <input type="password" class="input" placeholder="Password" />
                     <button class="btn btn-primary w-fit">Get Started</button>
                 </fieldset>
@@ -111,20 +112,53 @@
             </div>
         </section>
 
+        <!-- level container -->
         <section class="pt-10">
             <h2 class="text-center font-bold text-4xl mb-8"> <span class="text-[#00BCFF]">Let's</span> Learn
                 Vocabularies</h2>
             <div id="level-container" class="flex justify-center gap-5 flex-wrap"></div>
         </section>
 
-        <section id="word-container" class="w-11/12 mx-auto my-10 bg-gray-100 p-10 rounded-3xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        <!-- Loading screen -->
+        <section id="loading-ele" class="hidden">
+            <div class="py-20 mb-100 flex justify-center items-center">
+                <span class="loading loading-bars loading-xl"></span>
+            </div>
+        </section>
+
+        <!-- dynamic word container -->
+        <section id="word-container"
+            class="w-11/12 mx-auto my-10 bg-gray-100 p-10 rounded-3xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             <div class="text-center font-bangla col-span-full space-y-5 py-10">
                 <img class="mx-auto" src="./assets/alert-error.png" alt="">
                 <p class="text-[#79716B] text-lg">আপনি এখনো কোন Lesson Select করেন নি !</p>
                 <h3 class="font-bold text-4xl">একটি Lesson Select করুন</h3>
             </div>
         </section>
+
+        <!-- word pop up -->
+        <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <div id="word-detaiils-container" class="border-2 border-sky-200 rounded-lg p-6 space-y-6">
+                    <!-- <div>
+                        <h2>Eiger (<i class="fa-solid fa-microphone-lines"></i> : ইগার)</h2>
+                    </div> -->
+                </div>
+                <div class="modal-action justify-start">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn btn-primary">Complete Learning</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
+        <div class="border-sky-300 rounded-b-lg"></div>
     </main>
+
+
+
+
 
     <script src="./scripts/script.js"></script>
 </body>
