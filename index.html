@@ -119,16 +119,32 @@
             <div id="level-container" class="flex justify-center gap-5 flex-wrap"></div>
         </section>
 
+        <!-- search section -->
+        <section class="flex flex-col justify-center items-center py-10">
+            <div class="join">
+                <div>
+                    <label class="input validator join-item">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input id="search-input" type="text" placeholder="Search Vocabularies" required />
+                    </label>
+                </div>
+                <button onclick="searchfnc('search-input')" class="btn btn-primary join-item">Search</button>
+            </div>
+            <small id="warning" class="hidden text-red-500 font-medium mt-2">Enter Word!</small>
+
+        </section>
+
+
         <!-- Loading screen -->
         <section id="loading-ele" class="hidden">
-            <div class="py-20 mb-100 flex justify-center items-center">
+            <div class="py-10 mb-100 flex justify-center items-center">
                 <span class="loading loading-bars loading-xl"></span>
             </div>
         </section>
 
         <!-- dynamic word container -->
         <section id="word-container"
-            class="w-11/12 mx-auto my-10 bg-gray-100 p-10 rounded-3xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            class="w-11/12 mx-auto mb-10 bg-gray-100 p-10 rounded-3xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             <div class="text-center font-bangla col-span-full space-y-5 py-10">
                 <img class="mx-auto" src="./assets/alert-error.png" alt="">
                 <p class="text-[#79716B] text-lg">আপনি এখনো কোন Lesson Select করেন নি !</p>

@@ -1,8 +1,35 @@
-const manageLoading = (status)=>{
-    if(status){
+const searchfnc = async(id) => {
+    //tab highlight reset
+    const allBtns = document.querySelectorAll('.lesson-btn');
+    allBtns.forEach(btn => {
+        btn.classList.add('btn-outline');
+    })
+
+
+    document.getElementById('warning').classList.add('hidden')
+    const input = document.getElementById(id).value;
+    if (input === '' || input === ' ') {
+        document.getElementById('warning').classList.remove('hidden')
+        return;
+    }
+    manageLoading(true);
+
+    const res = await fetch("https://openapi.programming-hero.com/api/words/all");
+    const data = await res.json();
+    let allWords = data.data
+
+    const filteredWords = allWords.filter(i => i.word.toLowerCase().includes(input.toLowerCase()) )
+    displayWords(filteredWords);
+
+
+    manageLoading(false);
+}
+
+const manageLoading = (status) => {
+    if (status) {
         document.getElementById('loading-ele').classList.remove('hidden')
         document.getElementById('word-container').classList.add('hidden')
-    }else{
+    } else {
         document.getElementById('loading-ele').classList.add('hidden')
         document.getElementById('word-container').classList.remove('hidden')
     }
@@ -50,6 +77,11 @@ const displayWordDetails = (word) => {
     document.getElementById('word_modal').showModal();
 }
 
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
 
 const loadWordDetail = async (id) => {
     const url = `https://openapi.programming-hero.com/api/word/${id}`;
@@ -65,6 +97,7 @@ const loadWordDetail = async (id) => {
     //     });
 }
 
+// display level word
 const displayWords = (words) => {
     const wordContainer = document.getElementById('word-container');
     wordContainer.innerHTML = ''
@@ -99,7 +132,7 @@ const displayWords = (words) => {
 
                 <div class="flex justify-between items-center">
                     <button onclick="loadWordDetail(${word.id})" class="info-btn btn bg-[#1A91FF10] hover:bg-[#1A91FF50]"><i class="fa-solid fa-circle-info"></i></button>
-                    <button class="sound-btn btn bg-[#1A91FF10] hover:bg-[#1A91FF50]"><i class="fa-solid fa-volume-high"></i></button>
+                    <button onclick="pronounceWord('${word.word}')" class="sound-btn btn bg-[#1A91FF10] hover:bg-[#1A91FF50]"><i class="fa-solid fa-volume-high"></i></button>
                 </div>
         `;
         wordContainer.appendChild(wordCard);
@@ -124,7 +157,7 @@ const loadLevelWord = (id) => {
         .then(res => res.json())
         .then(json => {
             toggle(`lesson-btn-${id}`)
-            displayWords(json.data)
+            displayWords(json.data)   //passing array
         })
 }
 
