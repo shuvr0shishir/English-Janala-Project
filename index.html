@@ -22,11 +22,14 @@
 
     <!-- css -->
     <link rel="stylesheet" href="./styles/style.css">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
 </head>
 
 <body>
     <header>
-        <div class="navbar bg-base-100 shadow-sm">
+        <div class="navbar bg-[#BADEFF26] shadow-sm">
             <div class="navbar-start">
                 <div class="dropdown">
                     <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -112,6 +115,14 @@
             <h2 class="text-center font-bold text-4xl mb-8"> <span class="text-[#00BCFF]">Let's</span> Learn
                 Vocabularies</h2>
             <div id="level-container" class="flex justify-center gap-5 flex-wrap"></div>
+        </section>
+
+        <section id="word-container" class="w-11/12 mx-auto my-10 bg-gray-100 p-10 rounded-3xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            <div class="text-center font-bangla col-span-full space-y-5 py-10">
+                <img class="mx-auto" src="./assets/alert-error.png" alt="">
+                <p class="text-[#79716B] text-lg">আপনি এখনো কোন Lesson Select করেন নি !</p>
+                <h3 class="font-bold text-4xl">একটি Lesson Select করুন</h3>
+            </div>
         </section>
     </main>
 
